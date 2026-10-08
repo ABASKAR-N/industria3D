@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+.env
+
+# Node / React
+node_modules/
+dist/
+.next/
+out/
+.cache/
+*.local
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database / Large files
+*.db
+*.sqlite
+*.sqlite3
+
+# Models (large binary files)
+models/*.pt
+models/*.onnx
+models/*.h5
+
+# Uploads (user-generated, not source)
+uploads/
+
+# OS files
+Desktop.ini
