@@ -21,24 +21,24 @@ function ImageCard({ item, onOpen }) {
     <div
       onClick={() => onOpen(item)}
       style={{
-        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+        background: '#ffffff',
         borderRadius: '16px',
         overflow: 'hidden',
-        boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.05)',
         border: `1px solid ${sev.border}`,
         transition: 'transform 0.25s, box-shadow 0.25s',
         cursor: 'pointer',
       }}
       onMouseEnter={e => {
         e.currentTarget.style.transform = 'translateY(-6px)';
-        e.currentTarget.style.boxShadow = `0 12px 40px rgba(0,0,0,0.5), 0 0 0 2px ${sev.border}`;
+        e.currentTarget.style.boxShadow = `0 12px 40px rgba(0,0,0,0.1), 0 0 0 2px ${sev.border}`;
       }}
       onMouseLeave={e => {
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.35)';
+        e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.05)';
       }}
     >
-      <div style={{ position: 'relative', height: '220px', background: '#0d1117', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', height: '220px', background: '#f8fafc', overflow: 'hidden' }}>
         {imgSrc && !imgError ? (
           <>
             <img
@@ -51,7 +51,7 @@ function ImageCard({ item, onOpen }) {
             {!imgLoaded && (
               <div style={{
                 position: 'absolute', inset: 0,
-                background: 'linear-gradient(90deg, #1a1a2e 25%, #222244 50%, #1a1a2e 75%)',
+                background: 'linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%)',
                 backgroundSize: '200% 100%', animation: 'shimmer 1.4s infinite',
               }} />
             )}
@@ -79,7 +79,7 @@ function ImageCard({ item, onOpen }) {
             {imgLoaded && (
               <div style={{
                 position: 'absolute', inset: 0,
-                background: 'linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.6) 100%)',
+                background: 'linear-gradient(180deg, transparent 70%, rgba(0,0,0,0.2) 100%)',
                 pointerEvents: 'none',
               }} />
             )}
@@ -106,7 +106,7 @@ function ImageCard({ item, onOpen }) {
       <div style={{ padding: '16px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
           <div>
-            <div style={{ fontWeight: 700, fontSize: '15px', color: '#f1f5f9' }}>
+            <div style={{ fontWeight: 700, fontSize: '15px', color: '#1e293b' }}>
               {(item.component_type || item.component || '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
             </div>
             <div style={{ fontSize: '11px', color: '#6b7280', marginTop: '2px' }}>{item.image_id || 'ID N/A'}</div>
@@ -124,7 +124,7 @@ function ImageCard({ item, onOpen }) {
           {[['Defect Type', item.defect], ['Location', item.defect_location], ['Thermal Status', item.thermal_status?.toUpperCase()]].map(([label, val], i) => (
             <div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: '#6b7280' }}>{label}</span>
-              <span style={{ color: i === 2 ? thermalColor : '#e2e8f0', fontWeight: 500 }}>{val || '—'}</span>
+              <span style={{ color: i === 2 ? thermalColor : '#334155', fontWeight: 500 }}>{val || '—'}</span>
             </div>
           ))}
         </div>
@@ -149,30 +149,30 @@ function Lightbox({ item, onClose }) {
       display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px',
     }}>
       <div onClick={e => e.stopPropagation()} style={{
-        background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
+        background: '#ffffff',
         borderRadius: '20px', border: `1px solid ${sev.border}`,
         maxWidth: '840px', width: '100%', overflow: 'hidden',
-        boxShadow: `0 24px 80px rgba(0,0,0,0.7)`,
+        boxShadow: `0 24px 80px rgba(0,0,0,0.2)`,
         animation: 'fadeInScale 0.2s ease',
       }}>
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)',
+          padding: '16px 24px', borderBottom: '1px solid #e2e8f0',
         }}>
           <div>
-            <div style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '18px' }}>
+            <div style={{ color: '#1e293b', fontWeight: 700, fontSize: '18px' }}>
               {(item.component_type || item.component || '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())} — Defect Analysis
             </div>
             <div style={{ color: '#6b7280', fontSize: '12px', marginTop: '2px' }}>{item.image_id}</div>
           </div>
           <button onClick={onClose} style={{
-            background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)',
-            color: '#9ca3af', borderRadius: '8px', width: '34px', height: '34px',
+            background: '#f1f5f9', border: '1px solid #e2e8f0',
+            color: '#64748b', borderRadius: '8px', width: '34px', height: '34px',
             cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>×</button>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px' }}>
-          <div style={{ position: 'relative', background: '#0d1117', minHeight: '380px' }}>
+          <div style={{ position: 'relative', background: '#f8fafc', minHeight: '380px' }}>
             {imgSrc ? (
               <>
                 <img src={imgSrc} alt="Defect" style={{ width: '100%', height: '380px', objectFit: 'contain', display: 'block' }} />
@@ -199,7 +199,7 @@ function Lightbox({ item, onClose }) {
               </div>
             )}
           </div>
-          <div style={{ padding: '24px', borderLeft: '1px solid rgba(255,255,255,0.06)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ padding: '24px', borderLeft: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
               ['Severity', item.severity?.toUpperCase(), sev.text],
               ['Defect Type', item.defect, null],
@@ -209,9 +209,9 @@ function Lightbox({ item, onClose }) {
               ['Thermal Status', item.thermal_status?.toUpperCase(), THERMAL_COLOR[item.thermal_status]],
               item.confidence_score && ['AI Confidence', `${(parseFloat(item.confidence_score) * 100).toFixed(1)}%`, '#d4af37'],
             ].filter(Boolean).map(([label, val, color], i) => (
-              <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '10px', padding: '10px 14px' }}>
+              <div key={i} style={{ background: '#f8fafc', border: '1px solid #f1f5f9', borderRadius: '10px', padding: '10px 14px' }}>
                 <div style={{ fontSize: '11px', color: '#6b7280', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: color || '#f1f5f9' }}>{val || '—'}</div>
+                <div style={{ fontSize: '14px', fontWeight: 700, color: color || '#1e293b' }}>{val || '—'}</div>
               </div>
             ))}
           </div>
@@ -257,7 +257,7 @@ export default function DamageDetection() {
   const counts = { high: defective.filter(i => i.severity === 'high').length, medium: defective.filter(i => i.severity === 'medium').length, low: defective.filter(i => i.severity === 'low').length };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #0d1117 0%, #0f172a 100%)', padding: '32px 24px', color: '#f1f5f9' }}>
+    <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '32px 24px', color: '#1e293b' }}>
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
@@ -282,9 +282,10 @@ export default function DamageDetection() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '28px' }}>
           {[['Critical', counts.high, '#ef4444', '🔴'], ['Warning', counts.medium, '#f59e0b', '🟡'], ['Low Risk', counts.low, '#22c55e', '🟢']].map(([label, count, color, icon]) => (
             <div key={label} style={{
-              background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
+              background: '#ffffff',
               border: `1px solid ${color}30`, borderRadius: '14px', padding: '18px',
               display: 'flex', alignItems: 'center', gap: '14px',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
             }}>
               <span style={{ fontSize: '26px' }}>{icon}</span>
               <div>
@@ -301,17 +302,19 @@ export default function DamageDetection() {
             value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
             style={{
               flex: 1, minWidth: '220px',
-              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '10px', padding: '10px 16px', color: '#f1f5f9', fontSize: '13px', outline: 'none',
+              background: '#ffffff', border: '1px solid #e2e8f0',
+              borderRadius: '10px', padding: '10px 16px', color: '#1e293b', fontSize: '13px', outline: 'none',
+              boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
             }}
           />
           {['all', 'high', 'medium', 'low'].map(s => (
             <button key={s} onClick={() => setFilterSeverity(s)} style={{
               padding: '8px 18px', borderRadius: '10px',
-              border: filterSeverity === s ? `1px solid ${s === 'all' ? '#d4af37' : SEVERITY_COLOR[s]?.text}` : '1px solid rgba(255,255,255,0.1)',
-              background: filterSeverity === s ? (s === 'all' ? 'rgba(212,175,55,0.15)' : `${SEVERITY_COLOR[s]?.text}20`) : 'rgba(255,255,255,0.04)',
-              color: filterSeverity === s ? (s === 'all' ? '#d4af37' : SEVERITY_COLOR[s]?.text) : '#9ca3af',
+              border: filterSeverity === s ? `1px solid ${s === 'all' ? '#d4af37' : SEVERITY_COLOR[s]?.text}` : '1px solid #e2e8f0',
+              background: filterSeverity === s ? (s === 'all' ? 'rgba(212,175,55,0.1)' : `${SEVERITY_COLOR[s]?.text}15`) : '#ffffff',
+              color: filterSeverity === s ? (s === 'all' ? '#d4af37' : SEVERITY_COLOR[s]?.text) : '#64748b',
               fontWeight: 600, fontSize: '12px', cursor: 'pointer', transition: 'all 0.2s', textTransform: 'capitalize',
+              boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
             }}>{s === 'all' ? 'All Severities' : s}</button>
           ))}
           <div style={{ color: '#6b7280', fontSize: '12px', marginLeft: 'auto' }}>{filtered.length} results</div>
@@ -322,7 +325,7 @@ export default function DamageDetection() {
             <div style={{ width: 44, height: 44, border: '3px solid rgba(212,175,55,0.2)', borderTopColor: '#d4af37', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
           </div>
         ) : filtered.length === 0 ? (
-          <div style={{ padding: '60px', textAlign: 'center', background: 'rgba(255,255,255,0.03)', borderRadius: '16px', border: '1px dashed rgba(255,255,255,0.1)' }}>
+          <div style={{ padding: '60px', textAlign: 'center', background: '#ffffff', borderRadius: '16px', border: '1px dashed #cbd5e1' }}>
             <div style={{ fontSize: '40px', marginBottom: '12px' }}>🔍</div>
             <div style={{ color: '#6b7280' }}>No defective records match your filter.</div>
           </div>

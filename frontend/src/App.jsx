@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard';
 import MobileInspect from './pages/MobileInspect';
 import DamageDetection from './pages/DamageDetection';
 import PredictiveMaintenance from './pages/PredictiveMaintenance';
+import FloatingAIAgent from './components/FloatingAIAgent';
 
 export default function App() {
   // Simple client-side routing
@@ -47,6 +48,7 @@ export default function App() {
           <PredictiveMaintenance />
         </div>
       </main>
+      <FloatingAIAgent currentPage={page} />
     </div>
   );
 }
